@@ -493,11 +493,17 @@ class Visual_Portfolio_Admin {
         }
 
         $author = $wp_roles->get_role( 'author' );
+        $editor = $wp_roles->get_role( 'editor' );
 
         $wp_roles->add_role(
             'portfolio_manager',
             __( 'Portfolio Manager', '@@text_domain' ),
             $author->capabilities
+        );
+        $wp_roles->add_role(
+            'portfolio_editor',
+            __( 'Portfolio Editor', '@@text_domain' ),
+            $editor->capabilities
         );
         $wp_roles->add_role(
             'portfolio_author',
@@ -550,12 +556,14 @@ class Visual_Portfolio_Admin {
          */
         foreach ( $portfolio_cap as $cap ) {
             $wp_roles->add_cap( 'portfolio_manager', $cap );
+            $wp_roles->add_cap( 'portfolio_editor', $cap );
             $wp_roles->add_cap( 'portfolio_author', $cap );
             $wp_roles->add_cap( 'administrator', $cap );
             $wp_roles->add_cap( 'editor', $cap );
         }
         foreach ( $lists_cap as $cap ) {
             $wp_roles->add_cap( 'portfolio_manager', $cap );
+            $wp_roles->add_cap( 'portfolio_editor', $cap );
             $wp_roles->add_cap( 'administrator', $cap );
         }
 
