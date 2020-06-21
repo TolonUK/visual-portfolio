@@ -318,6 +318,36 @@ class Visual_Portfolio_Admin {
                 ),
             )
         );
+
+        $rest_meta_args = array(
+            'vp_filter' => array(
+                'type' => 'boolean',
+                'description' => 'Display catgeory filter for portfolio.',
+                'single' => true,
+                'show_in_rest' => true,
+                ),
+            'vp_items_click_action' => array(
+                'type' => 'string',
+                'description' => 'Portfolio item click action.',
+                'single' => true,
+                'show_in_rest' => true,
+                ),
+            'vp_items_style' => array(
+                'type' => 'string',
+                'description' => 'Style of the portfolio item.',
+                'single' => true,
+                'show_in_rest' => true,
+                ),
+            'vp_items_style_emerge__show_categories' => array(
+                'type' => 'boolean',
+                'description' => 'Display the categories on the portfolio item.',
+                'single' => true,
+                'show_in_rest' => true,
+            ),
+        );
+        foreach ( $rest_meta_args as $meta_key => $meta_args ) {
+            register_post_meta( 'vp_lists', $meta_key, $meta_args );
+        }
     }
 
     /**
